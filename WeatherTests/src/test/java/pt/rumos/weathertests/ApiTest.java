@@ -5,6 +5,7 @@
  */
 package pt.rumos.weathertests;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.IOException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -30,6 +31,10 @@ public class ApiTest {
         CloseableHttpResponse response = client.execute(new HttpGet("http://api.openweathermap.org/data/2.5/weather?q=Oporto,pt&appid=82e8405ce7ac327e50a24d8540f44c43"));
         String bodyAsString = EntityUtils.toString(response.getEntity());
         System.out.println("RESPONSE:" + bodyAsString);
+        
+        com.fasterxml.jackson.databind.ObjectMapper objectMapper = new com.fasterxml.jackson.databind.ObjectMapper();
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        CityWeatherResponse responseAsObj = objectMapper.readValue(bodyAsString, CityWeatherResponse.class);;
         //assertThat(bodyAsString, notNullValue());
     }
 
