@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.ImageIcon;
 import pt.rumos.services.WeatherApiService;
 import pt.rumos.entities.CityWeatherResponse;
 
@@ -20,7 +21,7 @@ public class WeatherServlet extends HttpServlet {
     //*****************************
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+        String StringImg;
         String city = request.getParameter("city");
         String country = request.getParameter("country");
 
@@ -32,5 +33,10 @@ public class WeatherServlet extends HttpServlet {
         PrintWriter w = response.getWriter(); //criar objecto PrintWriter para poder enviar o HTML
         w.println("CITY: " + city + "," + country);
         w.println("WEATHER FORECAST: " + cwr.getWeather().get(0).getDescription());
+        w.println("Main: "+cwr.getWeather().get(0).getMain());
+        w.println("Image: "+cwr.getWeather().get(0).getIcon());
+        
+         
+        
     }
 }
