@@ -5,7 +5,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1><a href="WeatherServlet?city=Oporto&country=pt">Click To Start</a></h1>
+        <h1>Weather</h1>
+        <form action="WeatherServlet" method="get" >
+            City: <input type="text" name="city"/><br>
+            Country: <input type="text" name="country"/><br>
+            <input type="submit" value="WeatherServlet" >
+            
+        </form>
         <!-- Esta url ("WeatherServlet") é o URLPattern do Servlet -->
     </body>
 </html>
