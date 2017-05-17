@@ -16,7 +16,7 @@ import pt.rumos.entities.CityWeatherResponse;
 public class WeatherApiService {
 
     public CityWeatherResponse getWeatherObj(String city, String country) throws IOException{
-     CloseableHttpClient client = HttpClientBuilder.create().build();
+        CloseableHttpClient client = HttpClientBuilder.create().build();
 
         CloseableHttpResponse responseApi = client.execute(new HttpGet("http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&appid=82e8405ce7ac327e50a24d8540f44c43"));
         String bodyAsString = EntityUtils.toString(responseApi.getEntity());

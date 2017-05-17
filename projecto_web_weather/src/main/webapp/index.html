@@ -7,8 +7,10 @@
     <body>
         <h1>Weather</h1>
         <form action="WeatherServlet" method="get" >
-            City: <input type="text" name="city"/><br>
-            Country: <input type="text" name="country"/><br>
+            <label for="city">City:</label> 
+            <input id="city" type="text" name="city" required/><br>
+            <label for="country">Country:</label> 
+            <input id="country" type="text" name="country" required/><br>
             <input type="submit" value="WeatherServlet" >
             
         </form>

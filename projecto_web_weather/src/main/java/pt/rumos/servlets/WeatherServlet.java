@@ -31,10 +31,12 @@ public class WeatherServlet extends HttpServlet {
         
         //resposta
         PrintWriter w = response.getWriter(); //criar objecto PrintWriter para poder enviar o HTML
-        w.println("CITY: " + city + "," + country);
-        w.println("WEATHER FORECAST: " + cwr.getWeather().get(0).getDescription());
-        w.println("Main: "+cwr.getWeather().get(0).getMain());
-        w.println("Image: "+cwr.getWeather().get(0).getIcon());
+        w.println("<html><body>");
+        w.println("CITY: " + city + "," + country + "</br>");
+        w.println("WEATHER FORECAST: " + cwr.getWeather().get(0).getDescription() + "</br>");
+        w.println("Main: " + cwr.getWeather().get(0).getMain() + "</br>");
+        w.println("Image: <img src=" + cwr.getWeather().get(0).getIcon() + ">");
+        w.println("</body></html>");
         
          
         

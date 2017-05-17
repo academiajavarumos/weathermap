@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Weather {
     
     private String description;
-    private String main;
-    private String icon;
+    private String main; //categoria de forecast
+    private String icon; //codigo do icon
 
     public String getDescription() {
         return description;
@@ -27,7 +27,7 @@ public class Weather {
     }
 
     public String getIcon() {
-        return icon;
+        return "http://openweathermap.org/img/w/" + icon + ".png";
     }
 
     public void setIcon(String icon) {
