@@ -2,6 +2,7 @@ package pt.rumos.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,12 +22,16 @@ public class WeatherServlet extends HttpServlet {
     //*****************************
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String StringImg;
+
         String city = request.getParameter("city");
         String country = request.getParameter("country");
 
         //pedido http para weather api
         WeatherApiService was = new WeatherApiService();
+
+        List ct = was.getCitiesList();
+        
+        
         CityWeatherResponse cwr = was.getWeatherObj(city, country);
         
         //resposta
@@ -38,7 +43,11 @@ public class WeatherServlet extends HttpServlet {
         w.println("Image: <img src=" + cwr.getWeather().get(0).getIcon() + ">");
         w.println("</body></html>");
         
-         
         
+        
+
     }
+    
+    
+
 }
