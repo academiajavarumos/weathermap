@@ -30,7 +30,16 @@ public class WeatherServlet extends HttpServlet {
         WeatherApiService was = new WeatherApiService();
         CityWeatherResponse cwr = was.getWeatherObj(city, country);
         
-        //resposta
+        //sendResponseUsingServlet(request, response, city, country, cwr);
+         
+        request.setAttribute("data", cwr);
+        request.getRequestDispatcher("weathermap.jsp").forward(request, response);
+    }
+    
+
+
+    private void sendResponseUsingServlet(HttpServletRequest request, HttpServletResponse response, String city, String country, CityWeatherResponse cwr) throws IOException {
+  //resposta
         PrintWriter w = response.getWriter(); //criar objecto PrintWriter para poder enviar o HTML
         w.println("<html><body>");
         w.println("CITY: " + city + "," + country + "</br>");
@@ -50,9 +59,5 @@ public class WeatherServlet extends HttpServlet {
         w.println("TEMP (Cº) :"+Converter.convertToCelsius(cwr.getMain().getTemp())+"<br/>");
         w.println("TEMP_MAX (Cº) :"+Converter.convertToCelsius(cwr.getMain().getTemp_max())+"Cº <br/>");
         w.println("TEMP_min (Cº) :"+Converter.convertToCelsius(cwr.getMain().getTemp_min())+"Cº <br/>");
-        w.println("</body></html>");
-        
-         
-        
-    }
+        w.println("</body></html>");    }
 }
